@@ -14,6 +14,16 @@
 * 微信:zhongsheng510
 * QQ:996674366
 
+## 安装方法
+### 一、直接下载
+***
+https://github.com/liuzhongsheng/SuperPay
+***
+
+### 二、使用composr安装
+***
+composer create-project liuzhongsheng/super-pay
+***
 
 ### 使用说明
 	1.当返回错误码为“SYSTEMERROR”时，请不要更换商户订单号，一定要使用原商户订单号重试，否则可能造成重复支付等资金风险。
