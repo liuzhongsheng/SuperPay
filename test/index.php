@@ -18,8 +18,8 @@ $data = [
     'device_info'      => '', // 设备号,选填，微信支付分配的终端设备号
     'partner_trade_no' => '', // 订单号商户订单号，需保持唯一性(只能是字母或者数字，不能包含有其它字符)
     'openid'           => '', // 用户openid
-    'check_name'       => '', // 校验用户姓名选项 NO_CHECK：不校验真实姓名 FORCE_CHECK：强校验真实姓名
-    're_user_name'     => '', // 收款用户真实姓名。如果check_name设置为FORCE_CHECK，则必填用户真实姓名
+    'check_name'       => 'NO_CHECK', // 校验用户姓名选项 NO_CHECK：不校验真实姓名 FORCE_CHECK：强校验真实姓名
+    //'re_user_name'     => '', // 收款用户真实姓名。如果check_name设置为FORCE_CHECK，则必填用户真实姓名
     'amount'           => '', // 企业付款金额，单位为元
     'desc'             => '', // 企业付款备注，必填。注意：备注中的敏感词会被转成字符*
 
