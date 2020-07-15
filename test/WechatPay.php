@@ -23,4 +23,12 @@ $data = [
     // 其他选填项可根据自己实际需要添加，参数名需和小程序文档上一致
 ];
 
-$obj->query($data, 'pay');
+// $obj->query($data, 'pay');
+$data = [
+    // 以下选项为必填项
+    'class_type_name' => 'Pay', // 操作类型：TransferAccounts 提现 Pay 支付
+    'class_name'      => 'Wechat', // 要调用的类名支持：Wechat
+];
+// 查询回调信息
+
+$obj->query($data,'notify');

@@ -109,3 +109,12 @@ composer create-project liuzhongsheng/super-pay
 	];
 
 	$obj->query($data, 'pay');
+#### 三、获取回调信息
+	$data = [
+	    // 以下选项为必填项
+	    'class_type_name' => 'Pay', // 操作类型：TransferAccounts 提现 Pay 支付
+	    'class_name'      => 'Wechat', // 要调用的类名支持：Wechat
+	];
+	$obj->query($data,'notify');
+
+#### 四、发送模板消息(开发中)
