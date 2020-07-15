@@ -34,18 +34,18 @@ composer create-project liuzhongsheng/super-pay
 	3.证书放置路径为:/cert/apiclient_cert.pem,/cert/apiclient_key.pem
 	4.案例请参考:/test/TransferAccounts.php
 ### 二、实例化
-***
+
 	$baseData = [
 		'mch_appid' => '', //申请商户号的appid或商户号绑定的appid
 		'mchid'     => '', //微信支付分配的商户号
 		'pay_key'   => '', //微信支付key
 	];
 	$obj = new SuperPay\Init($baseData)
-***
+
 
 
 #### 三、微信转账到余额
-***
+
 	$data = [
 		'class_type_name'  => 'TransferAccounts', // 操作类型：TransferAccounts 提现 Pay 支付
 		'class_name'       => 'Wechat', // 要调用的类名支持：Wechat
@@ -59,12 +59,10 @@ composer create-project liuzhongsheng/super-pay
 
 	];
     $obj->query($data);
-***
-
 
 
 #### 四、微信转账到银行卡
-***
+
 	1.生成pubKey.pem
 	$res = $obj->query($data,'getPublicKey');
 	file_put_contents('cert/pubkey.pem', $res['pub_key']);
@@ -85,19 +83,18 @@ composer create-project liuzhongsheng/super-pay
 	];
 
 	$obj->query($data);
-***
+
 ## 微信支付
 ### 一、实例化
-***
+
 	$baseData = [
 		'appid' => '', //申请商户号的appid或商户号绑定的appid
 		'mchid'     => '', //微信支付分配的商户号
 		'pay_key'   => '', //微信支付key
 	];
 	$obj = new SuperPay\Init($baseData)
-***
+
 #### 二、微信支付
-***
 	$data = [
 		// 以下选项为必填项
 		'class_type_name' => 'Pay', // 操作类型：TransferAccounts 提现 Pay 支付
@@ -112,5 +109,3 @@ composer create-project liuzhongsheng/super-pay
 	];
 
 	$obj->query($data, 'pay');
-
-***
