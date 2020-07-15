@@ -10,8 +10,9 @@
     ],
     "autoload": {
         "psr-4": {
-            "SuperPay\\": ["./src","./iTemplate"],
-            "SuperPay\\TransferAccounts\\": ["./src/TransferAccounts","./src/TransferAccounts/iTemplate"]
+            "SuperPay\\": "./src",
+            "SuperPay\\TransferAccounts\\": ["./src/TransferAccounts","./src/TransferAccounts/iTemplate"],
+            "SuperPay\\Pay\\": ["./src/Pay","./src/Pay/iTemplate"]
         }
     },
     "require": {}
