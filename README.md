@@ -14,8 +14,8 @@
 * QQ:996674366
 
 ###功能列表
-1. 提现转账:微信转账到银行卡，微信转账到余额
-2. 微信支付
+1. [提现转账](https://github.com/liuzhongsheng/SuperPay "提现转账"):[微信转账到银行卡](https://github.com/liuzhongsheng/SuperPay "微信转账到银行卡")，[微信转账到余额](https://github.com/liuzhongsheng/SuperPay "微信转账到余额")
+2. [微信支付](https://github.com/liuzhongsheng/SuperPay "微信支付")
 
 ## 安装方法
 ### 一、直接下载
