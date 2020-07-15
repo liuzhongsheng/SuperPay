@@ -13,7 +13,7 @@ $obj = new SuperPay\Init($baseData);
 
 // 微信转账，到余额
 $data = [
-    'class_type_name'  => 'TransferAccounts', // 操作类型：TransferAccounts 提现
+    'class_type_name'  => 'TransferAccounts', // 操作类型：TransferAccounts 提现 Pay 支付
     'class_name'       => 'Wechat', // 要调用的类名支持：Wechat
     'device_info'      => '', // 设备号,选填，微信支付分配的终端设备号
     'partner_trade_no' => '', // 订单号商户订单号，需保持唯一性(只能是字母或者数字，不能包含有其它字符)
@@ -35,7 +35,7 @@ openssl rsa -RSAPublicKey_in -in pubkey.pem -pubout  生成后的文件名.pem
 
 // 3.发起转账		   
 $data = [
-    'class_type_name'  => 'TransferAccounts', // 操作类型：TransferAccounts 提现
+    'class_type_name'  => 'TransferAccounts', // 操作类型：TransferAccounts 提现 Pay 支付
     'class_name'       => 'Wechat', // 要调用的类名支持：Wechat
     'partner_trade_no' => '', // 订单号商户订单号，需保持唯一性(只能是字母或者数字，不能包含有其它字符)
     'enc_bank_no'      => '', // 收款方银行卡号

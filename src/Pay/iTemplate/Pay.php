@@ -1,7 +1,7 @@
 <?php
-namespace SuperPay\TransferAccounts;
+namespace SuperPay\Pay;
 // 声明一个提交转账接口
-interface commit
+interface Pay
 {
-    public function commit($param);
+    public function Pay($param);
 }
