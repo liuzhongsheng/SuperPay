@@ -3,15 +3,17 @@ namespace SuperPay;
 class Init
 {
 	protected $baseParam  = null;
-	public function __construct($param)
+	public function __construct($param=[])
 	{
 		$this->baseParam = $param;
 	}
-    public function query($data,$event='commit')
+
+    // 提交支持：commit,notify
+    public function query($param,$event='commit')
     {
-        $className = 'SuperPay\\'.$data['class_type_name'].'\\' . $data['class_name'];
-        unset($data['class_type_name'],$data['class_name']);
+        $className = 'SuperPay\\'.$param['class_type_name'].'\\' . $param['class_name'];
+        unset($param['class_type_name'],$param['class_name']);
         $obj       = new $className($this->baseParam);
-        return $obj->$event($data);
+        return $obj->$event($param);
     }
 }
