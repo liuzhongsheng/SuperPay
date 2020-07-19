@@ -1,15 +1,12 @@
 <?php
-// Autoload 自动载入
 require '../vendor/autoload.php';
-
+//一、 微信支付
 $baseData = [
     'appid'   => '', //申请商户号的appid或商户号绑定的appid
     'mchid'   => '', //微信支付分配的商户号
     'pay_key' => '', //微信支付key
 ];
 $obj = new SuperPay\Init($baseData);
-
-// 微信转账，到余额
 $data = [
     // 以下选项为必填项
     'class_type_name' => 'Pay', // 操作类型：TransferAccounts 提现 Pay 支付
@@ -23,7 +20,9 @@ $data = [
     // 其他选填项可根据自己实际需要添加，参数名需和小程序文档上一致
 ];
 
-// $obj->query($data, 'pay');
+$obj->query($data, 'pay');
+
+// 二、微信回调
 $data = [
     // 以下选项为必填项
     'class_type_name' => 'Pay', // 操作类型：TransferAccounts 提现 Pay 支付

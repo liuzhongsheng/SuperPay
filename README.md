@@ -14,9 +14,11 @@
 * QQ:996674366
 
 ###功能列表
-1. [提现转账](https://github.com/liuzhongsheng/SuperPay#提现转账 "提现转账"):[微信转账到银行卡](https://github.com/liuzhongsheng/SuperPay#微信转账到银行卡 "微信转账到银行卡")，[微信转账到余额](https://github.com/liuzhongsheng/SuperPay#微信转账到余额 "微信转账到余额")
-2. [微信支付](https://github.com/liuzhongsheng/SuperPay#微信支付 "微信支付")
-
+1. 转账
+	1.0.[微信转账到银行卡](https://github.com/liuzhongsheng/SuperPay#微信转账到银行卡 "微信转账到银行卡")
+	1.1.[微信转账到余额](https://github.com/liuzhongsheng/SuperPay#微信转账到余额 "微信转账到余额")
+2. 支付
+	2.0.[微信支付](https://github.com/liuzhongsheng/SuperPay#微信支付 "微信支付")
 ## 安装方法
 ### 一、直接下载
 ***
@@ -25,7 +27,9 @@ https://github.com/liuzhongsheng/SuperPay
 
 ### 二、使用composr安装
 ***
-composer create-project liuzhongsheng/super-pay dev-master
+composer require liuzhongsheng/super-pay dev-master
+composer update
+
 ***
 ## 提现转账
 ### 一、转账使用说明
