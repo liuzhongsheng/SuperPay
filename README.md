@@ -15,8 +15,8 @@
 
 ###功能列表
 1. 转账
-	1.0.[微信转账到银行卡](https://github.com/liuzhongsheng/SuperPay#微信转账到银行卡 "微信转账到银行卡")
-	1.1.[微信转账到余额](https://github.com/liuzhongsheng/SuperPay#微信转账到余额 "微信转账到余额")
+	1.0.[微信转账到银行卡](https://github.com/liuzhongsheng/SuperPay#微信转账到银行卡 "微信转账到银行卡")  
+	1.1.[微信转账到余额](https://github.com/liuzhongsheng/SuperPay#微信转账到余额 "微信转账到余额")  
 2. 支付
 	2.0.[微信支付](https://github.com/liuzhongsheng/SuperPay#微信支付 "微信支付")
 ## 安装方法
