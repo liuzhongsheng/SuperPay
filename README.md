@@ -25,7 +25,7 @@ https://github.com/liuzhongsheng/SuperPay
 
 ### 二、使用composr安装
 ***
-composer create-project liuzhongsheng/super-pay
+composer create-project liuzhongsheng/super-pay dev-master
 ***
 ## 提现转账
 ### 一、转账使用说明
