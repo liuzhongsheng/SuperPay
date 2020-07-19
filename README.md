@@ -26,11 +26,13 @@ https://github.com/liuzhongsheng/SuperPay
 ***
 
 ### 二、使用composr安装
+
 ***
 composer require liuzhongsheng/super-pay dev-master
 composer update
 
 ***
+
 ## 提现转账
 ### 一、转账使用说明
 	1.当返回错误码为“SYSTEMERROR”时，请不要更换商户订单号，一定要使用原商户订单号重试，否则可能造成重复支付等资金风险。
