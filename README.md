@@ -28,7 +28,7 @@ https://github.com/liuzhongsheng/SuperPay
 ### 二、使用composr安装
 
 ***
-composer require liuzhongsheng/super-pay dev-master
+composer require liuzhongsheng/super-pay dev-master  
 composer update
 
 ***
