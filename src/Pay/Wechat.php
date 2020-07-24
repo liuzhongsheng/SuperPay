@@ -37,6 +37,8 @@ class Wechat extends SuperPay\WechatBase implements Pay, Notify
         $param['spbill_create_ip'] = $_SERVER['SERVER_ADDR'];
 
         $this->param = $param;
+        $data = $this->unifiedorder();
+        $data['package'] = 'prepay_id=' . $data['prepay_id'], 
         return $this->unifiedorder();
     }
 
