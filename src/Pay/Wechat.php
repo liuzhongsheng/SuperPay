@@ -35,11 +35,30 @@ class Wechat extends SuperPay\WechatBase implements Pay, Notify
         }
         $param['total_fee']        = $param['total_fee'] * 100;
         $param['spbill_create_ip'] = $_SERVER['SERVER_ADDR'];
+        $this->param               = $param;
+        $data                      = $this->unifiedorder();
 
-        $this->param = $param;
-        $data = $this->unifiedorder();
-        $data['package'] = 'prepay_id=' . $data['prepay_id'];
-        return $data;
+        $parameters = array(
+            'appId'     => $param['appid'], //小程序 ID
+            'timeStamp' => '' . time() . '', //时间戳
+            'nonceStr'  => md5($param['nonce_str']), //随机串
+            'package'   => 'prepay_id=' . $data['prepay_id'], //数据包
+            'signType'  => $param['sign_type'], //签名方式
+        );
+        //签名
+        $parameters['paySign'] = $this->getSign($parameters, $this->payKey);
+        $parameters['return_code'] = $data['return_code'];
+        if ($data['return_code'] == 'SUCCESS') {
+            $parameters['result_code']  = $data['result_code'];
+            $parameters['err_code']     = $data['err_code'];
+            $parameters['err_code_des'] = $data['err_code_des'];
+        }else{
+            $parameters['result_code']  = '';
+            $parameters['err_code']     = '';
+            $parameters['err_code_des'] = '';
+        }
+        unset($parameters['appid']);
+        return $parameters;
     }
 
     // 回调通知
@@ -60,7 +79,7 @@ class Wechat extends SuperPay\WechatBase implements Pay, Notify
         }
         return false;
     }
-    
+
     // 统一下单
     public function unifiedorder()
     {
