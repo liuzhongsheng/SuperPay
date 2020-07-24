@@ -38,8 +38,8 @@ class Wechat extends SuperPay\WechatBase implements Pay, Notify
 
         $this->param = $param;
         $data = $this->unifiedorder();
-        $data['package'] = 'prepay_id=' . $data['prepay_id'], 
-        return $this->unifiedorder();
+        $data['package'] = 'prepay_id=' . $data['prepay_id'];
+        return $data;
     }
 
     // 回调通知
