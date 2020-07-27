@@ -132,6 +132,7 @@ composer update
 		'touser'            => 'odUao5V2LOVdg7ev4EueAUWEglc',
 		//所需下发的订阅模板id
 		'template_id'       => 'QIF3Xvumf4VMvcV8pEQeN34oQDB68hDthG5PDYEPBQ',
+		// 模板信息内容，请参考商户平台订阅模板详情里的配置
 		'data'              => [
 			'name1' => [
 				'value' => 'liuzhongsheng',
