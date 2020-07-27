@@ -5,10 +5,11 @@ use SuperPay;
 
 class Wechat extends SuperPay\WechatBase implements Pay, Notify
 {
-    protected $param  = [];
-    protected $mchid  = '';
-    protected $payKey = '';
-    protected $appid  = '';
+    protected $param     = [];
+    protected $mchid     = '';
+    protected $payKey    = '';
+    protected $appid     = '';
+    protected $app_secret = '';
     /**
      *  @param appid            是 申请商户号的appid或商户号绑定的appid
      *  @param mchid            是 微信支付分配的商户号
@@ -16,9 +17,10 @@ class Wechat extends SuperPay\WechatBase implements Pay, Notify
     public function __construct($param = [])
     {
         if (!empty($param)) {
-            $this->mchid  = $param['mchid'];
-            $this->payKey = $param['pay_key'];
-            $this->appid  = $param['appid'];
+            $this->mchid     = $param['mchid'];
+            $this->payKey    = $param['pay_key'];
+            $this->appid     = $param['appid'];
+            $this->app_secret = $param['app_secret'];
         }
     }
 
@@ -46,19 +48,52 @@ class Wechat extends SuperPay\WechatBase implements Pay, Notify
             'signType'  => $param['sign_type'], //签名方式
         );
         //签名
-        $parameters['paySign'] = $this->getSign($parameters, $this->payKey);
+        $parameters['paySign']     = $this->getSign($parameters, $this->payKey);
         $parameters['return_code'] = $data['return_code'];
         if ($data['return_code'] == 'SUCCESS') {
             $parameters['result_code']  = $data['result_code'];
             $parameters['err_code']     = $data['err_code'];
             $parameters['err_code_des'] = $data['err_code_des'];
-        }else{
+        } else {
             $parameters['result_code']  = '';
             $parameters['err_code']     = '';
             $parameters['err_code_des'] = '';
         }
         unset($parameters['appid']);
         return $parameters;
+    }
+    // 发送消息模板
+    public function sendMessage($param)
+    {
+        $token = $this->getAccessToken();
+        //跳转小程序类型：developer为开发版；trial为体验版；formal为正式版；默认为正式版
+        if (!array_key_exists('miniprogram_state', $param)) {
+            $param['miniprogram_state'] = 'formal';
+        }
+
+        //进入小程序查看”的语言类型，支持zh_CN(简体中文)、en_US(英文)、zh_HK(繁体中文)、zh_TW(繁体中文)，默认为zh_CN
+        if (!array_key_exists('lang', $param)) {
+            $param['lang'] = 'zh_CN';
+        }
+
+        //点击模板卡片后的跳转页面，仅限本小程序内的页面。支持带参数,（示例index?foo=bar）。该字段不填则模板无跳转
+        if (!array_key_exists('page', $param)) {
+            $param['page'] = '';
+        }
+        $data = [
+            //接收者（用户）的 openid
+            'touser'            => $param['touser'],
+            //所需下发的订阅模板id
+            'template_id'       => $param['template_id'],
+            'page'              => $param['page'],
+            'data'              => $param['data'],
+            'miniprogram_state' => $param['miniprogram_state'],
+            'lang'              => $param['lang'],
+        ];
+
+        $url = 'https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token=' . $token;
+        $re  = $this->postXmlCurl(json_encode($data), $url, 60, false);
+        return $re;
     }
 
     // 回调通知
@@ -78,6 +113,15 @@ class Wechat extends SuperPay\WechatBase implements Pay, Notify
             }
         }
         return false;
+    }
+
+    // 获取access_token
+    protected function getAccessToken()
+    {
+        $url  = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=' . $this->appid . '&secret=' . $this->app_secret;
+        $r    = file_get_contents($url); //返回的是字符串，需要用json_decode转换成数组
+        $data = json_decode($r, true);
+        return $data['access_token'];
     }
 
     // 统一下单
