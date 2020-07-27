@@ -4,7 +4,7 @@ namespace SuperPay;
 class WechatBase
 {
 
-    protected static function postXmlCurl($xml, $url, $second = 30, $cert = false)
+    protected static function postXmlCurl($data, $url, $second = 30, $cert = false)
     {
         $isdir = "cert/"; //证书位置
         $ch    = curl_init(); //初始化curl
@@ -22,7 +22,7 @@ class WechatBase
             curl_setopt($ch, CURLOPT_CAINFO, $isdir . 'rootca.pem');
         }
         curl_setopt($ch, CURLOPT_POST, 1); //post提交方式
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $xml); //全部数据使用HTTP协议中的"POST"操作来发送
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data); //全部数据使用HTTP协议中的"POST"操作来发送
 
         $data = curl_exec($ch); //执行回话
         if ($data) {

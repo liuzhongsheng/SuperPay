@@ -123,4 +123,31 @@ composer update
 	];
 	$obj->query($data,'notify');
 
-#### 四、发送模板消息(开发中)
+#### 四、发送模板消息
+	$data = [
+		 // 以下选项为必填项
+		'class_type_name' => 'Pay', // 操作类型：TransferAccounts 提现 Pay 支付
+		'class_name'      => 'Wechat', // 要调用的类名支持：Wechat
+		//接收者（用户）的 openid
+		'touser'            => 'odUao5V2LOVdg7ev4EueAUWEglc',
+		//所需下发的订阅模板id
+		'template_id'       => 'QIF3Xvumf4VMvcV8pEQeN34oQDB68hDthG5PDYEPBQ',
+		'data'              => [
+			'name1' => [
+				'value' => 'liuzhongsheng',
+			],
+			'character_string' => [
+				'value' => 'O'.time(),
+			],
+			'amount3' => [
+				'value' => '0.15',
+			],
+			'name5' => [
+				'value' => '重庆洞子火锅',
+			],
+			'name8' => [
+				'value' => '2019-12-11 12:15:10',
+			],
+		],
+	];
+	$obj->query($data,'sendMessage');
