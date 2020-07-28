@@ -8,7 +8,7 @@ class Init
 		$this->baseParam = $param;
 	}
 
-    // 提交支持：commit,notify
+    // 提交支持：commit,notify,sendMessage
     public function query($param,$event='commit')
     {
         $className = 'SuperPay\\'.$param['class_type_name'].'\\' . $param['class_name'];
