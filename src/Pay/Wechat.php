@@ -5,10 +5,10 @@ use SuperPay;
 
 class Wechat extends SuperPay\WechatBase implements Pay, Notify
 {
-    protected $param     = [];
-    protected $mchid     = '';
-    protected $payKey    = '';
-    protected $appid     = '';
+    protected $param      = [];
+    protected $mchid      = '';
+    protected $payKey     = '';
+    protected $appid      = '';
     protected $app_secret = '';
     /**
      *  @param appid            是 申请商户号的appid或商户号绑定的appid
@@ -17,9 +17,9 @@ class Wechat extends SuperPay\WechatBase implements Pay, Notify
     public function __construct($param = [])
     {
         if (!empty($param)) {
-            $this->mchid     = $param['mchid'];
-            $this->payKey    = $param['pay_key'];
-            $this->appid     = $param['appid'];
+            $this->mchid      = $param['mchid'];
+            $this->payKey     = $param['pay_key'];
+            $this->appid      = $param['appid'];
             $this->app_secret = $param['app_secret'];
         }
     }
@@ -52,8 +52,8 @@ class Wechat extends SuperPay\WechatBase implements Pay, Notify
         $parameters['return_code'] = $data['return_code'];
         if ($data['return_code'] == 'SUCCESS') {
             $parameters['result_code']  = $data['result_code'];
-            $parameters['err_code']     = $data['err_code'];
-            $parameters['err_code_des'] = $data['err_code_des'];
+            $parameters['err_code']     = array_key_exists('err_code', $data) ? $data['err_code'] : '';
+            $parameters['err_code_des'] = array_key_exists('err_code_des', $data) ? $data['err_code_des'] : '';
         } else {
             $parameters['result_code']  = '';
             $parameters['err_code']     = '';
