@@ -39,7 +39,9 @@ class Wechat extends SuperPay\WechatBase implements Pay, Notify
         $param['spbill_create_ip'] = $_SERVER['SERVER_ADDR'];
         $this->param               = $param;
         $data                      = $this->unifiedorder();
-
+        if($data['return_code'] == 'FAIL'){
+            return ['err_code_des'=>$data['return_msg']];
+        }
         $parameters = array(
             'appId'     => $param['appid'], //小程序 ID
             'timeStamp' => '' . time() . '', //时间戳
