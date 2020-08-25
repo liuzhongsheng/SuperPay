@@ -10,7 +10,7 @@ class Wechat extends SuperPay\WechatBase implements Commit
     protected $payKey = '';
     protected $appid  = '';
     /**
-     *  @param mch_appid        是
+     *  @param appid            是
      *  @param appid            是 申请商户号的appid或商户号绑定的appid
      *  @param mchid            是 微信支付分配的商户号
      */
@@ -18,7 +18,7 @@ class Wechat extends SuperPay\WechatBase implements Commit
     {
         $this->mchid  = $param['mchid'];
         $this->payKey = $param['pay_key'];
-        $this->appid  = $param['mch_appid'];
+        $this->appid  = $param['appid'];
     }
 
     /**
